@@ -44,4 +44,23 @@ class Blockchain {
   getHead(){
     return this.chain[this.chain.length-1];
   }
+
+  // add a block to the chain method takes a newBlock as an argument
+  addBlock(newBlock){
+    // 1. get the previous block's HASH on the chain (the head-block)
+    newBlock.prevHash = this.getHead().hash
+    // 2. compute the hash of the new block (based also on the hash of the prevBlock we got in step 1)
+    newBlock.hash = newBlock.calculateBlockHash(); 
+    // 3. add the new block to the chain
+    this.chain.push(newBlock);
+  }
 }
+
+let StephanosCoin = new Blockchain();
+
+StephanosCoin.addBlock(new Block(1, "01/01/1970", {amount:60}));
+StephanosCoin.addBlock(new Block(2, "01/01/1970", {amount:30}));
+StephanosCoin.addBlock(new Block(3, "01/01/1970", {amount:40}));
+
+
+console.log(JSON.stringify(StephanosCoin.chain, null, 4));
