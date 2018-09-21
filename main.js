@@ -39,4 +39,9 @@ class Blockchain {
   createGenesisBlock(){
     return new Block(0, new Date(), "Genesis Block, hello blochain!", "0");
   }
+
+  // simple method to retrieve the lates (head) block on the chain
+  getHead(){
+    return this.chain[this.chain.length-1];
+  }
 }
