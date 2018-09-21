@@ -35,7 +35,8 @@ class Blockchain {
     this.chain = [this.createGenesisBlock()];
   }
 
+  // generate the first block on the chain
   createGenesisBlock(){
-    
+    return new Block(0, new Date(), "Genesis Block, hello blochain!", "0");
   }
 }
